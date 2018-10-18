@@ -80,6 +80,9 @@ class Base(object):
             elif name == 'ppageno':
                 self.ppageno = int(value)
 
+        if element.get('lang', None):
+            self.lang = element.get('lang', None)
+
     def __dir__(self):
 
         if six.PY3:
@@ -147,6 +150,7 @@ class Line(Base):
 
 class Paragraph(Base):
     _allowed_ocr_classes = {'lines', 'words'}
+    _dir_methods = ['lang', ]
 
 
 class Block(Base):
